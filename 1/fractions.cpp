@@ -12,12 +12,12 @@ std::ostream& operator<<(std::ostream& out, const Fraction& frac){
    // создание самой дроби
 Fraction::Fraction(const int64_t& numerator, const int64_t& denominator) {
 	if (denominator < 0) {
-		numerator_ = -numerator;
-		denominator_ = -denominator;
+		this->numerator_ = -numerator;
+		this->denominator_ = -denominator;
 	}
 	else{
-		numerator_ = -numerator;
-		denominator_ = -denominator;
+		this->numerator_ = numerator;
+		this->denominator_ = denominator;
 	}
 	normal();
 }
@@ -44,24 +44,53 @@ void Fraction::normal() {
 	this->denominator_ /= gcd;
 }
 
-// сложение
-/*Fraction& operator+(const Fraction& frac) {
+// Оператор копирования       
+/*Fraction& Fraction::operator=(const Fraction& frac){
+	this->numerator_ = frac.numerator_;
+	this->denominator_ = frac.denominator_;
 
+	return *this;
+}*/
+
+// сложение
+Fraction Fraction::operator+(const Fraction& frac) {
+	int64_t a = this->numerator_;
+	int64_t b = this->denominator_;
+
+	int64_t a1 = frac.numerator_;
+	int64_t b1 = frac.denominator_;
+
+	return Fraction(a * b1 + a1 * b, b * b1);
+}
+Fraction Fraction::operator+(const int64_t& num) {
+	return *this + Fraction(num);
+}
+Fraction operator+(const uint64_t num, const Fraction& frac) {
+	return Fraction(num) + frac;
 }
 
-Fraction& operator+(const uint64_t& numb);
+Fraction Fraction::operator-() const{
+	return Fraction(-this->numerator_, this->denominator_);
+}
 
 // вычитание
-Fraction& operator-(const Fraction& frac);
-Fraction& operator-(const uint64_t& numb);
+Fraction Fraction::operator-(const Fraction& frac) {
+	return *this + (-frac);
+}
+Fraction Fraction::operator-(const int64_t& num) {
+	return *this - Fraction(num);
+}
+Fraction operator-(const uint64_t num, const Fraction& frac) {
+	return Fraction(num) - frac;
+}
 
-
-//умножение
-Fraction& operator*(const Fraction& frac);  
-Fraction& operator*(const uint64_t& numb);
-
+/*//умножение
+Fraction& Fraction::operator*(const Fraction& first, const Fraction& second);  
+Fraction& Fraction::operator*(const int64_t& first, const Fraction& second);
+Fraction& Fraction::operator*(const Fraction& first, const int64_t& second);
 
 // деление
-Fraction& operator/(const Fraction& frac);
-Fraction& operator/(const uint64_t& numb);
+Fraction& Fraction::operator/(const Fraction& first, const Fraction& second);
+Fraction& Fraction::operator/(const int64_t& first, const Fraction& second);
+Fraction& Fraction::operator/(const Fraction& first, const int64_t& second);
 */
