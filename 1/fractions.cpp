@@ -11,30 +11,41 @@ std::ostream& operator<<(std::ostream& out, const Fraction& frac){
 
    // создание самой дроби
 Fraction::Fraction(const int64_t& numerator, const int64_t& denominator) {
-	this->numerator_ = numerator ^ (((uint64_t)denominator >> 63) << 63);
-	this->denominator_ = ~denominator + 1;
+	if (denominator < 0) {
+		numerator_ = -numerator;
+		denominator_ = -denominator;
+	}
+	else{
+		numerator_ = -numerator;
+		denominator_ = -denominator;
+	}
 	normal();
 }
 
 
 // НОД
-int64_t Fraction::GCD_(const int64_t& first, const int64_t& second) {
+int64_t Fraction::GCD_(const uint64_t& first, const uint64_t& second) {
 	if (first % second == 0) {
 		return second;
 	}
 	else {
-		return GCD(second, first % second);
+		return GCD_(second, first % second);
 	}
 }
 // приведение к нормальному виду
 void Fraction::normal() {
-	uint32_t gcd = GCD(this->numerator_, this->denominator_);
+	uint64_t a = this->numerator_;
+	if (a < 0) {
+		a = -a;
+	}
+	uint64_t b = this->denominator_;
+	int64_t gcd = GCD_(a, b);
 	this->numerator_ /= gcd;
 	this->denominator_ /= gcd;
 }
 
 // сложение
-Fraction& operator+(const Fraction& frac) {
+/*Fraction& operator+(const Fraction& frac) {
 
 }
 
@@ -53,3 +64,4 @@ Fraction& operator*(const uint64_t& numb);
 // деление
 Fraction& operator/(const Fraction& frac);
 Fraction& operator/(const uint64_t& numb);
+*/

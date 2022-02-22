@@ -6,7 +6,7 @@ class Fraction{
     uint64_t denominator_;			// знаменатель
 
 	// НОД числа
-    int64_t GCD_(const int64_t& first, const int64_t& second);
+    int64_t GCD_(const uint64_t& first, const uint64_t& second);
 	// приведение к нормальному виду
 	void normal();
 
