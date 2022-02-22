@@ -1,6 +1,6 @@
 #include "fraction.h"
 
 int main(){
-    Fraction frac(1, 2);
+    Fraction frac(2, -4);
     std::cout << frac;
 }
