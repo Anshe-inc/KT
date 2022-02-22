@@ -8,7 +8,7 @@ class Fraction{
 	// НОД числа
     int64_t GCD_(const int64_t& first, const int64_t& second);
 	// приведение к нормальному виду
-	Fraction normal();
+	void normal();
 
 public:
     // конструтор
@@ -19,8 +19,7 @@ public:
 	// парсинг целого числа
     Fraction(int64_t num) : numerator_(num), denominator_(1) {}
     // создание самой дроби
-	Fraction(const int64_t& numerator, const uint64_t& denominator) :
-			numerator_(numerator), denominator_(denominator) {}
+	Fraction(const int64_t& numerator, const int64_t& denominator);
 
     // ничего не выделяем на куче по этому дефолтный деструктор
 	~Fraction() = default;
