@@ -17,4 +17,17 @@ int main(){
     
     std::cout << a << '-' << 2 << '=' << a - 2 << std::endl;    
     std::cout << 2 << '-' << a << '=' << 2 - a << std::endl; 
+
+    std::cout << a << '*' << b << '=' << a * b << std::endl;    
+    
+    std::cout << a << '*' << 2 << '=' << a * 2 << std::endl;    
+    std::cout << 2 << '*' << a << '=' << 2 * a << std::endl;
+    
+    std::cout << a << ':' << c << '=' << a / c << std::endl;    
+    
+    std::cout << a << ':' << 2 << '=' << a / 2 << std::endl;    
+    std::cout << 2 << ':' << a << '=' << 2 / a << std::endl;
+
+    std::cout << (Fraction(7/8) < Fraction(14/16));
+
 }

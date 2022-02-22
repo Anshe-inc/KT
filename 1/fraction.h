@@ -24,6 +24,10 @@ public:
     // ничего не выделяем на куче по этому дефолтный деструктор
 	~Fraction() = default;
 	
+    // инверсия дроби
+    Fraction inverce() const;
+
+    // ------- Операции -------
 	// сложение
 	Fraction operator+(const Fraction& frac);
 	Fraction operator+(const int64_t& num);
@@ -49,7 +53,38 @@ public:
 
 	// Оператор копирования       
     Fraction& operator=(const Fraction& frac);
+    // ------------------------
+    
+    // ------ Сравнение -------
+    // Равенство
+    bool operator==(const Fraction& frac);
+	bool operator==(const int64_t& num);
+    friend Fraction operator==(const uint64_t num, const Fraction& frac);
+    
+    // Неравенство
+    bool operator>(const Fraction& frac);
+	bool operator>(const int64_t& num);
+
+    bool operator<(const Fraction& frac);
+	bool operator<(const int64_t& num);
+    
+    bool operator>=(const Fraction& frac);
+	bool operator>=(const int64_t& num);
+    
+    bool operator<=(const Fraction& frac);
+	bool operator<=(const int64_t& num);
+    
+    friend bool operator>(const uint64_t num, const Fraction& frac);
+    friend bool operator>=(const uint64_t num, const Fraction& frac);
+    
+    friend bool operator<(const uint64_t num, const Fraction& frac);
+    friend bool operator<=(const uint64_t num, const Fraction& frac);
+    // ------------------------
+    
     // вывод
 	friend std::ostream& operator<<(std::ostream& out, const Fraction& frac);
+
+    // getter
+    uint64_t get_numerator() const;
 	
 };
