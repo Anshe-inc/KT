@@ -139,6 +139,16 @@ Fraction operator==(const uint64_t num, const Fraction& frac) {
 }
 
 // Неравенство
+bool Fraction::operator!=(const Fraction& frac) {
+	return (*this - frac).get_numerator() != 0;
+}
+bool Fraction::operator!=(const int64_t& num) {
+	return (*this - num).get_numerator() != 0;
+}
+Fraction operator!=(const uint64_t num, const Fraction& frac) {
+	return (num - frac).get_numerator() != 0;
+}
+
 bool Fraction::operator>(const Fraction& frac) {
 	return (*this - frac).get_numerator() > 0;
 }

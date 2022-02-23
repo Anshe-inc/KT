@@ -61,7 +61,11 @@ public:
 	bool operator==(const int64_t& num);
     friend Fraction operator==(const uint64_t num, const Fraction& frac);
     
-    // Неравенство
+    // Неравенство    
+    bool operator!=(const Fraction& frac);
+	bool operator!=(const int64_t& num);
+    friend Fraction operator!=(const uint64_t num, const Fraction& frac);
+    
     bool operator>(const Fraction& frac);
 	bool operator>(const int64_t& num);
 
